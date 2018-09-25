@@ -279,19 +279,19 @@ class KannelCollector:
                     smsc_stats_by_id[smscid]['failed'] = int(smsc['failed'])
                     smsc_stats_by_id[smscid]['queued'] = int(smsc['queued'])
                     smsc_stats_by_id[smscid]['sms'] = OrderedDict()
-                    smsc_stats_by_id[smscid]['sms']['received'] = int(smsc['sms']['received'])
-                    smsc_stats_by_id[smscid]['sms']['sent'] = int(smsc['sms']['sent'])
-                    smsc_stats_by_id[smscid]['dlr'] = OrderedDict()
-                    smsc_stats_by_id[smscid]['dlr']['received'] = int(smsc['dlr']['received'])
-                    smsc_stats_by_id[smscid]['dlr']['sent'] = int(smsc['dlr']['sent'])
+                    smsc_stats_by_id[smscid]['sms']['received'] = int(smsc['received'])
+                    smsc_stats_by_id[smscid]['sms']['sent'] = int(smsc['sent'])
+                    #smsc_stats_by_id[smscid]['dlr'] = OrderedDict()
+                    #smsc_stats_by_id[smscid]['dlr']['received'] = int(smsc['dlr']['received'])
+                    #smsc_stats_by_id[smscid]['dlr']['sent'] = int(smsc['dlr']['sent'])
 
             for smsc in smsc_stats_by_id:
                 metric_failed.add_metric([smsc], smsc_stats_by_id[smsc]['failed'])
                 metric_queued.add_metric([smsc], smsc_stats_by_id[smsc]['queued'])
                 metric_sms_received.add_metric([smsc], smsc_stats_by_id[smsc]['sms']['received'])
                 metric_sms_sent.add_metric([smsc], smsc_stats_by_id[smsc]['sms']['sent'])
-                metric_dlr_received.add_metric([smsc], smsc_stats_by_id[smsc]['dlr']['received'])
-                metric_dlr_sent.add_metric([smsc], smsc_stats_by_id[smsc]['dlr']['sent'])
+                #metric_dlr_received.add_metric([smsc], smsc_stats_by_id[smsc]['dlr']['received'])
+                #metric_dlr_sent.add_metric([smsc], smsc_stats_by_id[smsc]['dlr']['sent'])
 
             yield metric_failed
             yield metric_queued
